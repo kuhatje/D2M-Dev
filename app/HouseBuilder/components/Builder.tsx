@@ -158,22 +158,22 @@ const getCornerSegments = (
   const rotation = ((component.rotation ?? 0) + 360) % 360;
 
   switch (rotation) {
-    case 0:
+    case 0: // base orientation: bottom + left
       return [
         { x, y, width: 1, depth: wallThickness }, // bottom leg
         { x, y, width: wallThickness, depth: 1 }, // left leg
       ];
-    case 90:
+    case 90: // rotated clockwise: bottom + right
       return [
         { x, y, width: 1, depth: wallThickness }, // bottom leg
         { x: x + 1 - wallThickness, y, width: wallThickness, depth: 1 }, // right leg
       ];
-    case 180:
+    case 180: // top + right
       return [
         { x, y: y + 1 - wallThickness, width: 1, depth: wallThickness }, // top leg
         { x: x + 1 - wallThickness, y, width: wallThickness, depth: 1 }, // right leg
       ];
-    case 270:
+    case 270: // top + left
     default:
       return [
         { x, y: y + 1 - wallThickness, width: 1, depth: wallThickness }, // top leg
